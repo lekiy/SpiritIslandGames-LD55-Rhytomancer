@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://2pmycffv7fpg"]
+
+[ext_resource type="Script" path="res://scenes/HurtboxComponent.gd" id="1_i1l1s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4my71"]
+radius = 5.0
+
+[node name="HurtboxComponent" type="Area2D"]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_i1l1s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0)
+shape = SubResource("CircleShape2D_4my71")
+
+[connection signal="area_entered" from="." to="." method="_on_hitbox_area_entered"]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bl8qgx11jycgk"]
+
+[node name="RuneContainer" type="HBoxContainer"]
+anchors_preset = -1
+offset_left = -95.616
+offset_top = -77.76
+offset_right = -95.616
+offset_bottom = -77.76
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2

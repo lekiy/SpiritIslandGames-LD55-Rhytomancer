@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cngr5tcfbv5o4"]
+
+[ext_resource type="AudioStream" uid="uid://v382kpue2sjf" path="res://music/FirstSpells.wav" id="1_ao00b"]
+[ext_resource type="Script" path="res://scenes/Conductor.gd" id="2_lxb01"]
+
+[node name="Conductor" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ao00b")
+script = ExtResource("2_lxb01")
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

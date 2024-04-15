@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://cswadbran346w"]
+
+[ext_resource type="Texture2D" uid="uid://c4xg33mnj1yhf" path="res://images/Explosion 16x16.png" id="1_jovfx"]
+[ext_resource type="Script" path="res://scripts/Explosion.gd" id="2_m3vn7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s83if"]
+atlas = ExtResource("1_jovfx")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4keae"]
+atlas = ExtResource("1_jovfx")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo0j1"]
+atlas = ExtResource("1_jovfx")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4r5v"]
+atlas = ExtResource("1_jovfx")
+region = Rect2(0, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqq68"]
+atlas = ExtResource("1_jovfx")
+region = Rect2(0, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_040c1"]
+atlas = ExtResource("1_jovfx")
+region = Rect2(0, 100, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btesb"]
+atlas = ExtResource("1_jovfx")
+region = Rect2(0, 120, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_346pg"]
+atlas = ExtResource("1_jovfx")
+region = Rect2(0, 140, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cydag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s83if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4keae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo0j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4r5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqq68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_040c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btesb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_346pg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_cydag")
+autoplay = "default"
+frame_progress = 0.62157
+script = ExtResource("2_m3vn7")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

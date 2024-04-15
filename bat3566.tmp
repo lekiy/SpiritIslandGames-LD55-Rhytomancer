@@ -1,0 +1,187 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfjo1845tuwih"]
+
+[ext_resource type="Texture2D" uid="uid://bsakim4yhi5j5" path="res://images/Wizard - PurpleRed - 30x30.png" id="1_u8cfr"]
+[ext_resource type="Script" path="res://battle.gd" id="1_x14us"]
+[ext_resource type="Texture2D" uid="uid://cav0aqfiwmwac" path="res://images/Wolf - Tan - 30x24.png" id="2_88dno"]
+[ext_resource type="Texture2D" uid="uid://dj2jy5rfbvua8" path="res://images/Rhythm Bar - Gold Staff - 192x30.png" id="3_64kwf"]
+[ext_resource type="Script" path="res://RhythmBar.gd" id="5_berty"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw72p"]
+atlas = ExtResource("3_64kwf")
+region = Rect2(0, 60, 192, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d683s"]
+atlas = ExtResource("3_64kwf")
+region = Rect2(96, 30, 0, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo5y7"]
+atlas = ExtResource("3_64kwf")
+region = Rect2(0, 30, 0, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fcdq"]
+atlas = ExtResource("3_64kwf")
+region = Rect2(0, 0, 192, 30)
+
+[sub_resource type="Animation" id="Animation_a8kpu"]
+resource_name = "Rhythm"
+length = 1.00002
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FillLeft:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 30, 0, 30), Rect2(0, 30, 96, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FillRight:texture:region")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(192, 30, 0, 30), Rect2(96, 30, 96, 30)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FillRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(192, 0), Vector2(144.167, 15.312)]
+}
+
+[sub_resource type="Animation" id="Animation_ujf1w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FillLeft:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 30, 0, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FillRight:texture:region")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(96, 30, 0, 30)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FillRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f06w4"]
+_data = {
+"RESET": SubResource("Animation_ujf1w"),
+"Rhythm": SubResource("Animation_a8kpu")
+}
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_x14us")
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(35, 48)
+texture = ExtResource("1_u8cfr")
+
+[node name="Monster" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Monster"]
+position = Vector2(161, 50)
+texture = ExtResource("2_88dno")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+scale = Vector2(6, 6)
+transform = Transform2D(6, 0, 0, 6, 0, 0)
+
+[node name="RhythmBar" type="TextureRect" parent="HUD"]
+anchors_preset = -1
+anchor_top = 0.106
+anchor_bottom = 0.106
+texture = SubResource("AtlasTexture_pw72p")
+stretch_mode = 2
+script = ExtResource("5_berty")
+
+[node name="FillRight" type="TextureRect" parent="HUD/RhythmBar"]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 288.0
+offset_bottom = 30.0
+texture = SubResource("AtlasTexture_d683s")
+stretch_mode = 2
+
+[node name="FillLeft" type="TextureRect" parent="HUD/RhythmBar"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_uo5y7")
+stretch_mode = 2
+
+[node name="Cover" type="TextureRect" parent="HUD/RhythmBar"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_4fcdq")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/RhythmBar"]
+libraries = {
+"": SubResource("AnimationLibrary_f06w4")
+}
+
+[node name="Beat" type="TextureRect" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NoteContainer" type="BoxContainer" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BeatCount" type="Label" parent="HUD"]
+anchors_preset = -1
+anchor_right = 0.167
+anchor_bottom = 0.165
+offset_right = -161.384
+offset_bottom = -83.92
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Foreground" type="Sprite2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(6, 6)

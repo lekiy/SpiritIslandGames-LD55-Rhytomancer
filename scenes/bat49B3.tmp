@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://752xfo7cfe68"]
+
+[ext_resource type="Script" path="res://scripts/battle.gd" id="1_75y0a"]
+[ext_resource type="AudioStream" uid="uid://v382kpue2sjf" path="res://music/FirstSpells.wav" id="2_jkut7"]
+[ext_resource type="Script" path="res://scenes/Conductor.gd" id="3_pvx8t"]
+[ext_resource type="PackedScene" uid="uid://ckb30m80odvp" path="res://scenes/player.tscn" id="4_c0h1e"]
+[ext_resource type="PackedScene" uid="uid://ck8otp0xcabf5" path="res://scenes/rhythm_bar.tscn" id="4_j7rlw"]
+[ext_resource type="PackedScene" uid="uid://co6kb0hlogyyu" path="res://scenes/monster.tscn" id="5_nxfvy"]
+[ext_resource type="PackedScene" uid="uid://bl8qgx11jycgk" path="res://scenes/rune_container.tscn" id="7_6duo2"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_75y0a")
+metadata/_edit_horizontal_guides_ = [-51.0]
+
+[node name="Conductor" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jkut7")
+script = ExtResource("3_pvx8t")
+
+[node name="StartTimer" type="Timer" parent="Conductor"]
+
+[node name="Player" parent="." instance=ExtResource("4_c0h1e")]
+position = Vector2(39, 54)
+
+[node name="Monster" parent="." instance=ExtResource("5_nxfvy")]
+position = Vector2(147, 53)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="RhythmBar" parent="HUD" instance=ExtResource("4_j7rlw")]
+position = Vector2(194.333, 192.333)
+
+[node name="RuneContainer" parent="HUD" instance=ExtResource("7_6duo2")]
+anchor_left = 0.164
+anchor_top = 0.269
+anchor_right = 0.164
+anchor_bottom = 0.269
+offset_left = -130.595
+offset_top = -6.97867
+offset_right = 0.405319
+offset_bottom = 7.02133
+grow_horizontal = 2
+
+[node name="BeatCount" type="Label" parent="HUD"]
+visible = false
+anchors_preset = -1
+anchor_right = 0.167
+anchor_bottom = 0.165
+offset_right = -161.384
+offset_bottom = -83.92
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Foreground" type="Sprite2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(6, 6)
+
+[connection signal="beat_signal" from="Conductor" to="Monster" method="_on_conductor_beat_signal"]
+[connection signal="beat_signal" from="Conductor" to="HUD/RhythmBar" method="_on_conductor_beat_signal"]
+[connection signal="timeout" from="Conductor/StartTimer" to="Conductor" method="_on_StartTimer_timeout"]
+[connection signal="castSpellSignal" from="HUD/RhythmBar" to="Player" method="_on_cast_spell_signal"]

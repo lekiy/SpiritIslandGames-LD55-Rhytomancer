@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck8otp0xcabf5"]
+
+[ext_resource type="Texture2D" uid="uid://3meufuxg88mj" path="res://images/Rhythm Bar - Simple - 192x16.png" id="1_eiimt"]
+[ext_resource type="Script" path="res://scripts/RhythmBar.gd" id="2_ubpsj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g883d"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5hl4"]
+size = Vector2(16, 4)
+
+[node name="RhythmBar" type="Sprite2D"]
+position = Vector2(96, 96)
+texture = ExtResource("1_eiimt")
+script = ExtResource("2_ubpsj")
+
+[node name="PerfectTiming" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectTiming"]
+shape = SubResource("RectangleShape2D_g883d")
+
+[node name="GoodTiming" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoodTiming"]
+shape = SubResource("RectangleShape2D_y5hl4")
+
+[node name="FineTiming" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FineTiming"]
+shape = SubResource("RectangleShape2D_y5hl4")
+
+[connection signal="area_entered" from="PerfectTiming" to="." method="_on_perfect_timing_area_entered"]
+[connection signal="area_exited" from="PerfectTiming" to="." method="_on_perfect_timing_area_exited"]
+[connection signal="area_entered" from="GoodTiming" to="." method="_on_good_timing_area_entered"]
+[connection signal="area_exited" from="GoodTiming" to="." method="_on_good_timing_area_exited"]
+[connection signal="area_entered" from="FineTiming" to="." method="_on_fine_timing_area_entered"]
+[connection signal="area_exited" from="FineTiming" to="." method="_on_fine_timing_area_exited"]

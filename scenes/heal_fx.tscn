@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://dumg1tmo6q1of"]
+
+[ext_resource type="Texture2D" uid="uid://cqv6fjm1rg6se" path="res://images/HealFX - Back - 40x40.png" id="1_f8jnn"]
+[ext_resource type="Script" path="res://scripts/heal_fx.gd" id="1_qmkor"]
+[ext_resource type="Texture2D" uid="uid://pff1h8vrudel" path="res://images/HealFX - Front - 40x40.png" id="2_oodgf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gi1w"]
+atlas = ExtResource("1_f8jnn")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sfis"]
+atlas = ExtResource("1_f8jnn")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ikdnq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gi1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sfis")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4defe"]
+atlas = ExtResource("2_oodgf")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uji74"]
+atlas = ExtResource("2_oodgf")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjg63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4defe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uji74")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nrnp0"]
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_axis = Vector3(0, 2, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 15.0
+emission_ring_inner_radius = 14.0
+particle_flag_disable_z = true
+gravity = Vector3(0, -25, 0)
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+scale_min = 0.2
+color = Color(1, 1, 0.639216, 0.803922)
+
+[node name="HealFX" type="Node2D"]
+script = ExtResource("1_qmkor")
+
+[node name="Back" type="AnimatedSprite2D" parent="."]
+z_index = -2
+sprite_frames = SubResource("SpriteFrames_ikdnq")
+autoplay = "default"
+frame_progress = 0.866167
+
+[node name="Front" type="AnimatedSprite2D" parent="."]
+z_index = 5
+sprite_frames = SubResource("SpriteFrames_xjg63")
+autoplay = "default"
+frame_progress = 0.579771
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 10)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_nrnp0")
+lifetime = 1.7
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

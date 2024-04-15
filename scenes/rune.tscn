@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsie8d1kiwgus"]
+
+[ext_resource type="Texture2D" uid="uid://dwpqy7fl86b6i" path="res://images/Runes.png" id="1_3nhkn"]
+[ext_resource type="Script" path="res://scripts/Rune.gd" id="2_acnb4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jctqc"]
+resource_local_to_scene = true
+atlas = ExtResource("1_3nhkn")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Rune" type="TextureRect"]
+texture = SubResource("AtlasTexture_jctqc")
+script = ExtResource("2_acnb4")
