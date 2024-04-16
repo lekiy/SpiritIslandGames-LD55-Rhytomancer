@@ -72,10 +72,10 @@ offset_right = -161.384
 offset_bottom = -83.92
 
 [node name="HealthBar" type="TextureProgressBar" parent="HUD" node_paths=PackedStringArray("player")]
-offset_left = 16.6667
-offset_top = 15.0
-offset_right = 106.667
-offset_bottom = 55.0
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 10.0
+value = 5.0
 texture_under = ExtResource("7_g1noi")
 texture_progress = ExtResource("8_53rtl")
 script = ExtResource("9_f1fqh")

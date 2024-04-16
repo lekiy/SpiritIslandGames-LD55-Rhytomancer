@@ -1,11 +1,15 @@
-extends Node2D
+extends TextureProgressBar
 
+@export var player: Player
+var healthComponent
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	healthComponent = player.get_node("HealthComponent")
+	healthComponent.on_health_changed.connect(_on_health_changed_signal)
+	_on_health_changed_signal()
+#	?max_value = healthComponent.MAX_HEALTH
+	
+	
+func _on_health_changed_signal():
+	value = healthComponent.health*100/healthComponent.MAX_HEALTH
+	

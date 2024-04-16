@@ -69,13 +69,13 @@ script = ExtResource("1_qmkor")
 z_index = -2
 sprite_frames = SubResource("SpriteFrames_ikdnq")
 autoplay = "default"
-frame_progress = 0.866167
+frame_progress = 0.291494
 
 [node name="Front" type="AnimatedSprite2D" parent="."]
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_xjg63")
 autoplay = "default"
-frame_progress = 0.579771
+frame_progress = 0.0043311
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, 10)
