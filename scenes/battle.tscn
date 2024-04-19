@@ -28,7 +28,7 @@ script = ExtResource("3_pvx8t")
 [node name="StartTimer" type="Timer" parent="Conductor"]
 
 [node name="Player" parent="." instance=ExtResource("4_c0h1e")]
-position = Vector2(39, 77)
+position = Vector2(39, 74)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-39, -77)
@@ -114,6 +114,7 @@ texture = ExtResource("11_eesfb")
 centered = false
 
 [connection signal="beat_signal" from="Conductor" to="HUD/RhythmBar" method="_on_conductor_beat_signal"]
+[connection signal="finished" from="Conductor" to="Conductor" method="_on_finished"]
 [connection signal="timeout" from="Conductor/StartTimer" to="Conductor" method="_on_StartTimer_timeout"]
 [connection signal="area_entered" from="Player/BattleArea" to="Player" method="_on_battle_area_entered"]
 [connection signal="area_exited" from="Player/BattleArea" to="Player" method="_on_battle_area_exited"]

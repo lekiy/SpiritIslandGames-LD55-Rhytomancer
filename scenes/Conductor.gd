@@ -1,7 +1,8 @@
 extends AudioStreamPlayer2D
 
-@export var bpm := 60
+@export var bpm := 120
 @export var measures := 4
+@export var looping := true
 
 var song_position = 0.0
 var song_position_in_beats = 1
@@ -49,9 +50,17 @@ func _on_StartTimer_timeout():
 	if(song_position_in_beats < beats_before_start - 1):
 		$StartTimer.start()
 	elif song_position_in_beats == beats_before_start - 1:
-		$StartTimer.wait_time = $StartTimer.wait - (AudioServer.get_time_to_next_mix()+AudioServer.get_output_latency())
+		$StartTimer.wait_time = $StartTimer.wait_time - (AudioServer.get_time_to_next_mix()+AudioServer.get_output_latency())
 		$StartTimer.start()
 	else:
 		play()
 		$StartTimer.stop()
 	_report_beat()
+
+
+func _on_finished():
+	if looping:
+		song_position_in_beats = 1
+		last_reported_beat = 0
+		
+		play_with_beat_offset(2)

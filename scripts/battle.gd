@@ -8,7 +8,7 @@ extends Node2D
 @onready var wolf = preload("res://scenes/monster.tscn")
 
 func _ready():
-	$Conductor.play_with_beat_offset(1)
+	$Conductor.play_with_beat_offset(2)
 
 func _process(delta):
 	if(!monster):
