@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2pmycffv7fpg" path="res://scenes/hurtbox_component.tscn" id="4_nygq7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxjmq"]
-size = Vector2(20.4867, 18)
+size = Vector2(20, 20.5)
 
 [node name="Monster" type="Node2D"]
 script = ExtResource("1_rn14w")
@@ -22,7 +22,7 @@ collision_mask = 40
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(1.67099, 3)
+position = Vector2(0, 2.25)
 shape = SubResource("RectangleShape2D_wxjmq")
 
 [node name="AttackTimeLabel" type="Label" parent="."]
@@ -35,7 +35,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("4_nygq7")]
-position = Vector2(0, 8)
+position = Vector2(-16, -4)
 collision_layer = 16
 collision_mask = 8
 

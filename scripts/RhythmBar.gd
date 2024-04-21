@@ -1,6 +1,7 @@
 class_name RhythmBar extends Sprite2D
 
 var beatOrb = preload("res://scenes/beat.tscn")
+var fakeBeat = preload("res://scenes/fake_beat.tscn")
 var runeScene = preload("res://scenes/rune.tscn")
 var timingLabel = preload("res://scenes/timing_lable.tscn")
 
@@ -12,6 +13,10 @@ var currentNote = null
 var runesStored = []
 var runeIcons = []
 var spellStrength = 0
+
+var is_webbed = false
+
+@onready var player = get_node("../../Player")
 
 signal castSpellSignal(runes)
 
@@ -116,6 +121,13 @@ func _on_fine_timing_area_exited(area):
 
 
 func _on_conductor_beat_signal(beat_position):
-	var instance = beatOrb.instantiate()
-	add_child(instance)
-	instance.position.x = -96
+	if is_webbed:
+		is_webbed = false
+		var instance = fakeBeat.instantiate()
+		add_child(instance)
+		instance.position.x = -96
+	else:
+		var instance = beatOrb.instantiate()
+		add_child(instance)
+		instance.position.x = -96
+	

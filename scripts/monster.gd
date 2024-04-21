@@ -9,11 +9,10 @@ var speed = 60
 @export var attack_damage = 4
 @export var attackSpeed = 120
 @export var retreatSpeed = 60
-var startPosition
+var start_position
 var canAttack = false
 
 func _ready():
-	startPosition = global_position
 	attackTimeLabel.show()
 	attackTimeLabel.text = str(beatsUntilAttack)
 	
@@ -41,9 +40,9 @@ func useAttack():
 	target = get_parent().player.global_position
 	speed = attackSpeed
 
-func _on_hurtbox_component_hit_target():
+func _on_hurtbox_component_hit_target(_target):
 	speed = retreatSpeed
-	target = startPosition
+	target = start_position
 
 func _on_has_died():
 	get_parent().monster = null

@@ -6,15 +6,20 @@ extends Node2D
 @onready var monster : Monster = null
 
 @onready var wolf = preload("res://scenes/monster.tscn")
+@onready var giant_spider = preload("res://scenes/giant_spider.tscn")
 
 func _ready():
 	$Conductor.play_with_beat_offset(2)
 
 func _process(delta):
 	if(!monster):
-		var newMonster = wolf.instantiate()
+		var newMonster
+		if(randi() % 2):
+			newMonster = wolf.instantiate()
+		else:
+			newMonster = giant_spider.instantiate()
 		add_child(newMonster)
-		newMonster.position = player.global_position+Vector2(192, 0)
+		newMonster.global_position = player.global_position+Vector2(192, 0)		
+		newMonster.start_position = player.global_position+Vector2(192, 0)
 		conductor.beat_signal.connect(newMonster._on_conductor_beat_signal)
-		newMonster.startPosition = newMonster.global_position
 		monster = newMonster

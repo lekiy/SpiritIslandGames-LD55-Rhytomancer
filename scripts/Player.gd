@@ -18,10 +18,11 @@ func _on_cast_spell_signal(runes, strength):
 		if(battle.monster):
 			var target = battle.monster.get_node("HitboxComponent")
 			var spell = fireball.instantiate()
-			spell.target = target
-			spell.speed = global_position.distance_to(target.global_position)*2
+			spell.target = target.global_position
+			spell.speed = 100.0
 			spell.attack_damage = round(spell.maxDamage * strength)
-			add_child(spell)
+			spell.global_position = global_position
+			get_parent().add_child(spell)
 	if(runes == [Rune.type.CREATION, Rune.type.PROTECTION, Rune.type.PROTECTION, Rune.type.CREATION]):
 		var spell = healFX.instantiate()
 		$HealthComponent.heal(round(spell.maxEffect * strength))

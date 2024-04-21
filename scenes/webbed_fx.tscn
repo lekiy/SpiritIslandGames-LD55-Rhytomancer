@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3rrp27yrjspq"]
+
+[ext_resource type="Texture2D" uid="uid://bkal5ype3up8g" path="res://images/webbedfx.png" id="1_eoxpk"]
+[ext_resource type="Script" path="res://scenes/WebbedFX.gd" id="2_ii74u"]
+
+[node name="WebbedFX" type="Sprite2D"]
+position = Vector2(0, -4)
+texture = ExtResource("1_eoxpk")
+script = ExtResource("2_ii74u")
