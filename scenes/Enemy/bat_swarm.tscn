@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c65o2ca8akssf"]
+
+[ext_resource type="Script" path="res://scripts/BatSwarm.gd" id="1_yn5pb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3twec"]
+size = Vector2(60.25, 57.8125)
+
+[node name="BatSwarm" type="Node2D"]
+script = ExtResource("1_yn5pb")
+is_flying = true
+
+[node name="SwarmArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwarmArea"]
+shape = SubResource("RectangleShape2D_3twec")
+
+[connection signal="area_entered" from="SwarmArea" to="." method="_on_hitbox_component_area_entered"]

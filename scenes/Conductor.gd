@@ -14,7 +14,6 @@ var measure = 1
 var closest = 0
 var time_off_beat = 0.0
 
-signal beat_signal(position)
 signal measure_signal(position)
 
 func _physics_process(_delta):
@@ -28,7 +27,7 @@ func _report_beat():
 	if(last_reported_beat < song_position_in_beats):
 		if(measure > measures):
 			measure = 1
-		emit_signal("beat_signal", song_position_in_beats)
+		SignalBus.beat_signal.emit(song_position_in_beats)
 		emit_signal("measure_signal", measure)
 		last_reported_beat = song_position_in_beats
 		measure+=1

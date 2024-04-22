@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dggk34aeswn3h"]
+
+[ext_resource type="PackedScene" uid="uid://co6kb0hlogyyu" path="res://scenes/Enemy/monster.tscn" id="1_31xat"]
+[ext_resource type="Texture2D" uid="uid://c61svie40fqmn" path="res://images/Timer Swish - 12x12.png" id="2_jgbqn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqavk"]
+radius = 6.04052
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwsum"]
+radius = 5.0
+
+[node name="Bat" instance=ExtResource("1_31xat")]
+beatsPerAttack = 8
+attack_damage = 2
+is_flying = true
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jgbqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_fqavk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_gwsum")
+
+[node name="HealthComponent" parent="." index="4"]
+MAX_HEALTH = 5.0

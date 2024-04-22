@@ -1,21 +1,21 @@
 class_name projectile extends AnimatedSprite2D
 
-var target : Vector2
+var target : Node2D
 @export var speed : float
 @export var maxDamage = 6
 var attack_damage
+var angle
+var direction = Vector2.RIGHT
 
-@onready var explosionFX = preload("res://scenes/explosion.tscn")
+@onready var explosionFX = preload("res://scenes/Spell/explosion.tscn")
 
 func _process(delta):
-	var angle = 0
-	var direction = Vector2(1, 0).rotated(angle).normalized()
 	
 	if(target):
-		angle = get_angle_to(target)
+		angle = get_angle_to(target.global_position)
 		rotation = angle
 		direction = Vector2(1, 0).rotated(angle).normalized()
-	
+		
 	position += speed*direction*delta
 		
 		

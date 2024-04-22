@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://co6kb0hlogyyu"]
+[gd_scene load_steps=6 format=3 uid="uid://co6kb0hlogyyu"]
 
 [ext_resource type="Texture2D" uid="uid://cav0aqfiwmwac" path="res://images/Wolf - Tan - 30x24.png" id="1_m8ij4"]
 [ext_resource type="Script" path="res://scripts/monster.gd" id="1_rn14w"]
-[ext_resource type="PackedScene" uid="uid://cic3kx3d3wcko" path="res://scenes/hitbox_component.tscn" id="3_1uc61"]
-[ext_resource type="PackedScene" uid="uid://falvyc4yjisx" path="res://scenes/health_component.tscn" id="4_br1cs"]
-[ext_resource type="PackedScene" uid="uid://2pmycffv7fpg" path="res://scenes/hurtbox_component.tscn" id="4_nygq7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxjmq"]
-size = Vector2(20.4867, 18)
+[ext_resource type="PackedScene" uid="uid://cic3kx3d3wcko" path="res://scenes/Component/hitbox_component.tscn" id="3_1uc61"]
+[ext_resource type="PackedScene" uid="uid://falvyc4yjisx" path="res://scenes/Component/health_component.tscn" id="4_br1cs"]
+[ext_resource type="PackedScene" uid="uid://2pmycffv7fpg" path="res://scenes/Component/hurtbox_component.tscn" id="4_nygq7"]
 
 [node name="Monster" type="Node2D"]
 script = ExtResource("1_rn14w")
@@ -20,10 +17,6 @@ scale = Vector2(1.00719, 1)
 collision_layer = 4
 collision_mask = 40
 health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(1.67099, 3)
-shape = SubResource("RectangleShape2D_wxjmq")
 
 [node name="AttackTimeLabel" type="Label" parent="."]
 offset_left = -12.0

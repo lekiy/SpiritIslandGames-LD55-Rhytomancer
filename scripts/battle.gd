@@ -5,21 +5,30 @@ extends Node2D
 @onready var player : Player = $Player
 @onready var monster : Monster = null
 
-@onready var wolf = preload("res://scenes/monster.tscn")
-@onready var giant_spider = preload("res://scenes/giant_spider.tscn")
+@onready var wolf = preload("res://scenes/Enemy/wolf.tscn")
+@onready var giant_spider = preload("res://scenes/Enemy/giant_spider.tscn")
+@onready var bat_swarm = preload("res://scenes/Enemy/bat_swarm.tscn")
 
 func _ready():
 	$Conductor.play_with_beat_offset(2)
 
-func _process(delta):
+func _process(_delta):
 	if(!monster):
-		var newMonster
-		if(randi() % 2):
-			newMonster = wolf.instantiate()
-		else:
-			newMonster = giant_spider.instantiate()
+		var monster_scene
+		monster_scene = bat_swarm
+#		if(randi() % 2):
+#			monster_scene = wolf
+#		else:
+#			monster_scene = giant_spider
+		spawn_monster(monster_scene)
+
+
+func spawn_monster(monster_scene):
+		var newMonster = monster_scene.instantiate()
 		add_child(newMonster)
-		newMonster.global_position = player.global_position+Vector2(192, 0)		
-		newMonster.start_position = player.global_position+Vector2(192, 0)
-		conductor.beat_signal.connect(newMonster._on_conductor_beat_signal)
+		newMonster.global_position = player.global_position+Vector2(192, 0)
+		if newMonster.is_flying :
+			newMonster.global_position = player.global_position+Vector2(192, -40)
+		newMonster.start_position = newMonster.global_position
+		SignalBus.beat_signal.connect(newMonster._on_conductor_beat_signal)
 		monster = newMonster

@@ -1,0 +1,114 @@
+[gd_scene load_steps=17 format=3 uid="uid://5cmykq8uepo8"]
+
+[ext_resource type="Script" path="res://scripts/EarthSpike.gd" id="1_3ojwx"]
+[ext_resource type="Texture2D" uid="uid://bfudej8y8fshc" path="res://images/DirtProjectile.png" id="2_sq3pc"]
+[ext_resource type="Texture2D" uid="uid://b63hlvt7bobk8" path="res://images/DirtSpike.png" id="3_k180h"]
+[ext_resource type="PackedScene" uid="uid://2pmycffv7fpg" path="res://scenes/Component/hurtbox_component.tscn" id="4_k0dbe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl560"]
+atlas = ExtResource("2_sq3pc")
+region = Rect2(0, 0, 30, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pn32h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl560")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5d6s"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lunlv"]
+atlas = ExtResource("3_k180h")
+region = Rect2(0, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8eve"]
+atlas = ExtResource("3_k180h")
+region = Rect2(30, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up63g"]
+atlas = ExtResource("3_k180h")
+region = Rect2(60, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wihgp"]
+atlas = ExtResource("3_k180h")
+region = Rect2(90, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7tgl"]
+atlas = ExtResource("3_k180h")
+region = Rect2(120, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mnd2"]
+atlas = ExtResource("3_k180h")
+region = Rect2(150, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r23wt"]
+atlas = ExtResource("3_k180h")
+region = Rect2(180, 0, 30, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4rrbo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lunlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8eve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up63g")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_wihgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7tgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mnd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r23wt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bkeo0"]
+radius = 2.0
+height = 44.0
+
+[node name="EarthSpike" type="Node2D"]
+script = ExtResource("1_3ojwx")
+
+[node name="Projectile" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pn32h")
+
+[node name="Area2D" type="Area2D" parent="Projectile"]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile/Area2D"]
+position = Vector2(6, 3)
+shape = SubResource("CircleShape2D_l5d6s")
+
+[node name="Spike" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -21)
+sprite_frames = SubResource("SpriteFrames_4rrbo")
+frame = 6
+frame_progress = 1.0
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("4_k0dbe")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_bkeo0")
+
+[connection signal="area_entered" from="Projectile/Area2D" to="." method="_on_projectile_area_entered"]
+[connection signal="animation_finished" from="Spike" to="." method="_on_spike_animation_finished"]

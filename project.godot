@@ -15,6 +15,10 @@ run/main_scene="res://scenes/battle.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBus="*res://scripts/signal_bus.gd"
+
 [dotnet]
 
 project/assembly_name="Spirit Island Games LD55 - Summoning"

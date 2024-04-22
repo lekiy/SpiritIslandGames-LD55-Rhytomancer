@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckb30m80odvp"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_da3h3"]
-[ext_resource type="PackedScene" uid="uid://falvyc4yjisx" path="res://scenes/health_component.tscn" id="2_h75se"]
+[ext_resource type="PackedScene" uid="uid://falvyc4yjisx" path="res://scenes/Component/health_component.tscn" id="2_h75se"]
 [ext_resource type="Texture2D" uid="uid://bsakim4yhi5j5" path="res://images/Wizard - PurpleRed - 30x30.png" id="2_qdwml"]
-[ext_resource type="PackedScene" uid="uid://cic3kx3d3wcko" path="res://scenes/hitbox_component.tscn" id="3_bx1mu"]
+[ext_resource type="PackedScene" uid="uid://cic3kx3d3wcko" path="res://scenes/Component/hitbox_component.tscn" id="3_bx1mu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wpf4"]
 size = Vector2(19, 26)

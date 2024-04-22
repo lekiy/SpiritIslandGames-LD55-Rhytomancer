@@ -20,6 +20,9 @@ var is_webbed = false
 
 signal castSpellSignal(runes)
 
+func _ready():
+	SignalBus.beat_signal.connect(_on_conductor_beat_signal)
+
 func _unhandled_input(event):
 	if(checkCasts(event)):
 		if(checkCastsPressed(event)):
@@ -120,7 +123,7 @@ func _on_fine_timing_area_exited(area):
 		currentNote = null
 
 
-func _on_conductor_beat_signal(beat_position):
+func _on_conductor_beat_signal(_beat_position):
 	if is_webbed:
 		is_webbed = false
 		var instance = fakeBeat.instantiate()

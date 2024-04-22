@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bk2ev7e333l8y" path="res://images/web.png" id="1_3bupn"]
 [ext_resource type="Script" path="res://scripts/WebShot.gd" id="2_lgkst"]
-[ext_resource type="PackedScene" uid="uid://2pmycffv7fpg" path="res://scenes/hurtbox_component.tscn" id="3_r5hi4"]
+[ext_resource type="PackedScene" uid="uid://2pmycffv7fpg" path="res://scenes/Component/hurtbox_component.tscn" id="3_r5hi4"]
 
 [node name="WebShot" type="Sprite2D"]
 texture = ExtResource("1_3bupn")

@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://dumg1tmo6q1of"]
 
-[ext_resource type="Texture2D" uid="uid://cqv6fjm1rg6se" path="res://images/HealFX - Back - 40x40.png" id="1_f8jnn"]
-[ext_resource type="Script" path="res://scripts/heal_fx.gd" id="1_qmkor"]
-[ext_resource type="Texture2D" uid="uid://pff1h8vrudel" path="res://images/HealFX - Front - 40x40.png" id="2_oodgf"]
+[ext_resource type="Script" path="res://scripts/heal_fx.gd" id="1_i2tlr"]
+[ext_resource type="Texture2D" uid="uid://cqv6fjm1rg6se" path="res://images/HealFX - Back - 40x40.png" id="2_jeip1"]
+[ext_resource type="Texture2D" uid="uid://pff1h8vrudel" path="res://images/HealFX - Front - 40x40.png" id="3_b5gf0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gi1w"]
-atlas = ExtResource("1_f8jnn")
+atlas = ExtResource("2_jeip1")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sfis"]
-atlas = ExtResource("1_f8jnn")
+atlas = ExtResource("2_jeip1")
 region = Rect2(0, 40, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ikdnq"]
@@ -27,11 +27,11 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4defe"]
-atlas = ExtResource("2_oodgf")
+atlas = ExtResource("3_b5gf0")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uji74"]
-atlas = ExtResource("2_oodgf")
+atlas = ExtResource("3_b5gf0")
 region = Rect2(0, 40, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xjg63"]
@@ -63,7 +63,7 @@ scale_min = 0.2
 color = Color(1, 1, 0.639216, 0.803922)
 
 [node name="HealFX" type="Node2D"]
-script = ExtResource("1_qmkor")
+script = ExtResource("1_i2tlr")
 
 [node name="Back" type="AnimatedSprite2D" parent="."]
 z_index = -2

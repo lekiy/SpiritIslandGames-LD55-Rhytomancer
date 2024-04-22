@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxwwewpnfadjb"]
+[gd_scene load_steps=9 format=3 uid="uid://bxwwewpnfadjb"]
 
 [ext_resource type="Texture2D" uid="uid://dgei58gl3q4th" path="res://images/Fireball 20x10.png" id="1_y7scw"]
-[ext_resource type="Script" path="res://scenes/fireball.gd" id="2_au2o2"]
-[ext_resource type="PackedScene" uid="uid://2pmycffv7fpg" path="res://scenes/hurtbox_component.tscn" id="3_3vnyk"]
+[ext_resource type="Script" path="res://scripts/fireball.gd" id="2_au2o2"]
+[ext_resource type="PackedScene" uid="uid://2pmycffv7fpg" path="res://scenes/Component/hurtbox_component.tscn" id="3_3vnyk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_67ts8"]
 atlas = ExtResource("1_y7scw")
@@ -26,6 +26,9 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8ygg"]
+radius = 6.0
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_quvyk"]
 emission_shape = 1
 emission_sphere_radius = 6.39
@@ -43,6 +46,9 @@ frame_progress = 0.317685
 script = ExtResource("2_au2o2")
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("3_3vnyk")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_x8ygg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(5, 0)

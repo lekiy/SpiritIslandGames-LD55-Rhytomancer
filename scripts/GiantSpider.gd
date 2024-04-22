@@ -1,8 +1,8 @@
 extends Monster
 
-@onready var web_shot_scene = preload("res://scenes/web_shot.tscn")
+@onready var web_shot_scene = preload("res://scenes/Enemy/web_shot.tscn")
 
-func _process(delta):
+func _process(_delta):
 	if(target):
 		var web_shot = web_shot_scene.instantiate()
 #		web_shot.target = target

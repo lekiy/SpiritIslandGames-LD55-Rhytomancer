@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://nw34wng3uhh5"]
 
-[ext_resource type="PackedScene" uid="uid://co6kb0hlogyyu" path="res://scenes/monster.tscn" id="1_fwra4"]
+[ext_resource type="PackedScene" uid="uid://co6kb0hlogyyu" path="res://scenes/Enemy/monster.tscn" id="1_fwra4"]
 [ext_resource type="Script" path="res://scripts/GiantSpider.gd" id="2_qrp0w"]
 [ext_resource type="Texture2D" uid="uid://cscx8g4xbf4vc" path="res://images/spider.png" id="3_gbwup"]
 
@@ -21,3 +21,6 @@ shape = SubResource("RectangleShape2D_7uutv")
 
 [node name="HurtboxComponent" parent="." index="3"]
 position = Vector2(-18, 1)
+
+[node name="HealthComponent" parent="." index="4"]
+MAX_HEALTH = 16.0

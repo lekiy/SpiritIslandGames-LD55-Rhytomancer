@@ -4,7 +4,7 @@ var fall_rate = 7
 var velocity = Vector2(-160, -160);
 var attack_damage
 
-@onready var web_fx_scene = preload("res://scenes/webbed_fx.tscn")
+@onready var web_fx_scene = preload("res://scenes/Enemy/webbed_fx.tscn")
 @onready var rhythm_bar = get_node("../HUD/RhythmBar")
 
 func _ready():
