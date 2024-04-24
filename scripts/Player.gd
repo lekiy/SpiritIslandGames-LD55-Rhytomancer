@@ -19,9 +19,9 @@ func _process(delta):
 func _on_cast_spell_signal(runes, strength):
 	if(runes == [Rune.type.DESTRUCTION, Rune.type.FORCE, Rune.type.DESTRUCTION]): #Fireball
 		if(battle.monster):
-			var target = battle.monster.get_hitbox()
+			var spell_target = battle.monster.get_hitbox()
 			var spell = fireball.instantiate()
-			spell.target = target
+			spell.target = spell_target
 			spell.speed = 100.0
 			spell.attack_damage = round(spell.maxDamage * strength)
 			spell.global_position = global_position

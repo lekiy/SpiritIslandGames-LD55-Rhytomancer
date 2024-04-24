@@ -9,13 +9,14 @@ var direction = Vector2.RIGHT
 
 @onready var explosionFX = preload("res://scenes/Spell/explosion.tscn")
 
-func _process(delta):
-	
+func _ready():
 	if(target):
 		angle = get_angle_to(target.global_position)
 		rotation = angle
 		direction = Vector2(1, 0).rotated(angle).normalized()
 		
+		
+func _process(delta):
 	position += speed*direction*delta
 		
 		

@@ -128,9 +128,10 @@ func _on_conductor_beat_signal(_beat_position):
 		is_webbed = false
 		var instance = fakeBeat.instantiate()
 		add_child(instance)
-		instance.position.x = -96
+		instance.position.x = -192
 	else:
 		var instance = beatOrb.instantiate()
 		add_child(instance)
-		instance.position.x = -96
+		instance.position.x = -192
+#		instance.hide()
 	

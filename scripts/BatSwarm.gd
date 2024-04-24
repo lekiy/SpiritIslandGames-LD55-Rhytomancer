@@ -14,8 +14,8 @@ func _ready():
 	for i in bat_count:
 		var bat = bat_scene.instantiate()
 		add_child(bat)
-		bat.global_position = global_position+Vector2(0, 10).rotated(deg_to_rad(360/bat_count*i))
-		bat.start_position = player.global_position+Vector2(192, -40)+Vector2(0, 10).rotated(deg_to_rad(360/bat_count*i))
+		bat.global_position = global_position+Vector2(0, 10).rotated(deg_to_rad(360.0/bat_count*i))
+		bat.start_position = player.global_position+Vector2(192, -40)+Vector2(0, 10).rotated(deg_to_rad(360.0/bat_count*i))
 		SignalBus.beat_signal.connect(bat._on_conductor_beat_signal)
 		notify_swarm.connect(bat._on_hitbox_component_area_entered)
 		bat.beatsUntilAttack -= i*2

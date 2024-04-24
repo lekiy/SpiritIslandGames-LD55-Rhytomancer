@@ -6,10 +6,10 @@ enum type { DESTRUCTION, CREATION, FORCE, PROTECTION }
 func updateType():
 	var atlas: AtlasTexture = texture
 	match runeType:
-		type.DESTRUCTION: atlas.region = Rect2(0, 0, 16, 16)
-		type.CREATION: atlas.region = Rect2(16, 0, 16, 16)
-		type.FORCE: atlas.region = Rect2(16, 16, 16, 16)
-		type.PROTECTION: atlas.region = Rect2(0, 16, 16, 16)
+		type.DESTRUCTION: atlas.region = Rect2(48, 0, 16, 16)
+		type.CREATION: atlas.region = Rect2(32, 0, 16, 16)
+		type.FORCE: atlas.region = Rect2(16, 0, 16, 16)
+		type.PROTECTION: atlas.region = Rect2(0, 0, 16, 16)
 
 func _ready():
 	updateType()

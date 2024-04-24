@@ -1,12 +1,10 @@
 extends AudioStreamPlayer2D
 
-@export var bpm := 120
 @export var measures := 4
 @export var looping := true
 
 var song_position = 0.0
 var song_position_in_beats = 1
-var sec_per_beat = 60.0 / bpm
 var last_reported_beat = 0
 var beats_before_start = 0
 var measure = 1
@@ -20,7 +18,7 @@ func _physics_process(_delta):
 	if(playing):
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
-		song_position_in_beats = int(floor(song_position / sec_per_beat)) + beats_before_start
+		song_position_in_beats = int(floor(song_position / SignalBus.BEATS_PER_SECOND)) + beats_before_start
 		_report_beat()
 		
 func _report_beat():
@@ -34,12 +32,12 @@ func _report_beat():
 
 func play_with_beat_offset(num):
 	beats_before_start = num
-	$StartTimer.wait_time = sec_per_beat
+	$StartTimer.wait_time = SignalBus.BEATS_PER_SECOND
 	$StartTimer.start()
 	
 func play_from_beat(beat, offset):
 	play()
-	seek(beat * sec_per_beat)
+	seek(beat * SignalBus.BEATS_PER_SECOND)
 	beats_before_start = offset
 	measure = beat % 4
 

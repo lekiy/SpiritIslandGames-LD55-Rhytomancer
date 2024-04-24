@@ -2,7 +2,7 @@ class_name Monster extends Node2D
 
 @export var beatsPerAttack = 6
 var beatsUntilAttack = beatsPerAttack
-@onready var attackTimeLabel : Label = $AttackTimeLabel
+var attackTimeLabel : Label
 
 var target
 var speed = 60
@@ -14,6 +14,7 @@ var start_position
 var canAttack = false
 
 func _ready():
+	attackTimeLabel = $AttackTimeLabel
 	attackTimeLabel.show()
 	attackTimeLabel.text = str(beatsUntilAttack)
 	
