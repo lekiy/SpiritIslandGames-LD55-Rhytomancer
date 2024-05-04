@@ -30,13 +30,11 @@ animations = [{
 radius = 6.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_quvyk"]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 6.39
-particle_flag_disable_z = true
-gravity = Vector3(1, 0, 0)
 initial_velocity_max = 10.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(1, 0, 0)
 color = Color(1, 0.219608, 0, 1)
 
 [node name="Fireball" type="AnimatedSprite2D"]

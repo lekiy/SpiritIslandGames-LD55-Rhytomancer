@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://752xfo7cfe68"]
+[gd_scene load_steps=14 format=3 uid="uid://752xfo7cfe68"]
 
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_75y0a"]
 [ext_resource type="AudioStream" uid="uid://v382kpue2sjf" path="res://music/FirstSpells.wav" id="2_jkut7"]
 [ext_resource type="Script" path="res://scenes/Conductor.gd" id="3_pvx8t"]
 [ext_resource type="PackedScene" uid="uid://ckb30m80odvp" path="res://scenes/player.tscn" id="4_c0h1e"]
-[ext_resource type="PackedScene" uid="uid://ck8otp0xcabf5" path="res://scenes/rhythm_bar.tscn" id="4_j7rlw"]
 [ext_resource type="PackedScene" uid="uid://bl8qgx11jycgk" path="res://scenes/rune_container.tscn" id="7_6duo2"]
 [ext_resource type="Texture2D" uid="uid://cht06tt2jn7e2" path="res://images/HealthBar - Empty - 90x30.png" id="7_g1noi"]
 [ext_resource type="Texture2D" uid="uid://elj77ecj0cbu" path="res://images/HealthBar - Fill - 90x30.png" id="8_53rtl"]
@@ -12,10 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b71jogingmymu" path="res://images/Forest Trees Dark - 192x108.png" id="9_1pwxk"]
 [ext_resource type="Script" path="res://scripts/HealthBar.gd" id="9_f1fqh"]
 [ext_resource type="Texture2D" uid="uid://b5eksgvkr6yca" path="res://images/Forest Trees Light - 192x108.png" id="10_g7ag3"]
-[ext_resource type="Texture2D" uid="uid://owcokm4wi3l" path="res://images/Clock Nodes.png" id="10_jhvu4"]
-[ext_resource type="Script" path="res://scenes/RhythmClock.gd" id="11_882qo"]
 [ext_resource type="Texture2D" uid="uid://ye6n7xh4sorl" path="res://images/Forest Floor - 192x108.png" id="11_eesfb"]
-[ext_resource type="Texture2D" uid="uid://m8gd3xx7d0de" path="res://images/Clock Hand.png" id="12_k175a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ni6xr"]
 size = Vector2(129, 78.061)
@@ -52,10 +48,6 @@ shape = SubResource("RectangleShape2D_ni6xr")
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 
-[node name="RhythmBar" parent="HUD" instance=ExtResource("4_j7rlw")]
-visible = false
-position = Vector2(194.333, 192.333)
-
 [node name="RuneContainer" parent="HUD" instance=ExtResource("7_6duo2")]
 anchor_left = 0.164
 anchor_top = 0.269
@@ -84,14 +76,6 @@ texture_under = ExtResource("7_g1noi")
 texture_progress = ExtResource("8_53rtl")
 script = ExtResource("9_f1fqh")
 player = NodePath("../../Player")
-
-[node name="RhythmClock" type="Sprite2D" parent="HUD"]
-position = Vector2(194.667, 104)
-texture = ExtResource("10_jhvu4")
-script = ExtResource("11_882qo")
-
-[node name="ClockHand" type="Sprite2D" parent="HUD/RhythmClock"]
-texture = ExtResource("12_k175a")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -129,4 +113,3 @@ centered = false
 [connection signal="timeout" from="Conductor/StartTimer" to="Conductor" method="_on_StartTimer_timeout"]
 [connection signal="area_entered" from="Player/BattleArea" to="Player" method="_on_battle_area_entered"]
 [connection signal="area_exited" from="Player/BattleArea" to="Player" method="_on_battle_area_exited"]
-[connection signal="castSpellSignal" from="HUD/RhythmBar" to="Player" method="_on_cast_spell_signal"]

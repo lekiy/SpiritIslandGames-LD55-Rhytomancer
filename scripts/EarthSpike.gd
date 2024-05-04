@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var projectile = $Projectile
+@onready var _projectile = $Projectile
 @onready var spike = $Spike
 @onready var hurtboxComponent = $HurtboxComponent/CollisionShape2D2
 
@@ -18,7 +18,7 @@ func _process(delta):
 
 
 func _on_projectile_area_entered(area):
-	projectile.queue_free()
+	_projectile.queue_free()
 	speed = 0
 	global_position.x = area.global_position.x
 	spike.show()

@@ -50,15 +50,15 @@ animations = [{
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nrnp0"]
 lifetime_randomness = 0.5
+particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 2, 1)
 emission_ring_height = 1.0
 emission_ring_radius = 15.0
 emission_ring_inner_radius = 14.0
-particle_flag_disable_z = true
-gravity = Vector3(0, -25, 0)
 orbit_velocity_min = -0.1
 orbit_velocity_max = 0.1
+gravity = Vector3(0, -25, 0)
 scale_min = 0.2
 color = Color(1, 1, 0.639216, 0.803922)
 

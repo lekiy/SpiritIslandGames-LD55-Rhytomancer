@@ -124,6 +124,7 @@ func _on_fine_timing_area_exited(area):
 
 
 func _on_conductor_beat_signal(_beat_position):
+	pass
 	if is_webbed:
 		is_webbed = false
 		var instance = fakeBeat.instantiate()

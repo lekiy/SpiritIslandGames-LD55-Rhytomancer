@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var rhythmBar = $HUD/RhythmBar
 @onready var conductor = $Conductor
 @onready var player : Player = $Player
 @onready var monster : Monster = null
@@ -15,11 +14,13 @@ func _ready():
 func _process(_delta):
 	if(!monster):
 		var monster_scene
-		monster_scene = bat_swarm
-#		if(randi() % 2):
-#			monster_scene = wolf
-#		else:
-#			monster_scene = giant_spider
+		match(randi() % 3):
+			0:
+				monster_scene = wolf
+			1:
+				monster_scene = giant_spider
+			2:
+				monster_scene = bat_swarm	
 		spawn_monster(monster_scene)
 
 

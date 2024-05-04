@@ -7,6 +7,6 @@
 resource_local_to_scene = true
 atlas = ExtResource("1_uewmk")
 
-[node name="Rune" type="TextureRect"]
+[node name="Rune" type="Sprite2D"]
 texture = SubResource("AtlasTexture_ra5ry")
 script = ExtResource("2_acnb4")

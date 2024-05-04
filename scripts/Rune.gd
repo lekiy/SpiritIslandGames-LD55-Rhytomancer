@@ -1,4 +1,4 @@
-class_name Rune extends TextureRect
+class_name Rune extends Sprite2D
 
 enum type { DESTRUCTION, CREATION, FORCE, PROTECTION }
 @export var runeType = type.DESTRUCTION
