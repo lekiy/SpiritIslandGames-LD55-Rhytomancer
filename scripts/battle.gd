@@ -9,12 +9,14 @@ extends Node2D
 @onready var bat_swarm = preload("res://scenes/Enemy/bat_swarm.tscn")
 
 func _ready():
-	$Conductor.play_with_beat_offset(2)
+	pass
+	#$Conductor.play_with_beat_offset(2)
 
 func _process(_delta):
 	if(!monster):
 		var monster_scene
 		match(randi() % 3):
+		#match(0):
 			0:
 				monster_scene = wolf
 			1:
@@ -31,5 +33,4 @@ func spawn_monster(monster_scene):
 		if newMonster.is_flying :
 			newMonster.global_position = player.global_position+Vector2(192, -40)
 		newMonster.start_position = newMonster.global_position
-		SignalBus.beat_signal.connect(newMonster._on_conductor_beat_signal)
 		monster = newMonster

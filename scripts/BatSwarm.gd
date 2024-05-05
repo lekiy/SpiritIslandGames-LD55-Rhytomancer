@@ -16,9 +16,8 @@ func _ready():
 		add_child(bat)
 		bat.global_position = global_position+Vector2(0, 10).rotated(deg_to_rad(360.0/bat_count*i))
 		bat.start_position = player.global_position+Vector2(192, -40)+Vector2(0, 10).rotated(deg_to_rad(360.0/bat_count*i))
-		SignalBus.beat_signal.connect(bat._on_conductor_beat_signal)
 		notify_swarm.connect(bat._on_hitbox_component_area_entered)
-		bat.beatsUntilAttack -= i*2
+		#bat.beatsUntilAttack -= i*2
 
 func _process(_delta):
 	var has_monster = false

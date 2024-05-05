@@ -10,7 +10,6 @@ radius = 6.04052
 radius = 5.0
 
 [node name="Bat" instance=ExtResource("1_31xat")]
-beatsPerAttack = 8
 attack_damage = 2
 is_flying = true
 

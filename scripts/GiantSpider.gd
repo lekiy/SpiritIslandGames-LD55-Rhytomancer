@@ -12,13 +12,6 @@ func _process(_delta):
 		get_parent().add_child(web_shot)
 		target = null
 
-func _on_conductor_beat_signal(_beat_position):
-	if(canAttack):
-		beatsUntilAttack-=1
-		attackTimeLabel.text = str(beatsUntilAttack)
-		if(beatsUntilAttack <= 0):
-			useAttack()
-			beatsUntilAttack = beatsPerAttack
 		
 func useAttack():
 	target = get_parent().player.global_position

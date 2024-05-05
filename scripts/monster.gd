@@ -1,22 +1,17 @@
 class_name Monster extends Node2D
 
-@export var beatsPerAttack = 6
-var beatsUntilAttack = beatsPerAttack
-var attackTimeLabel : Label
-
 var target
 var speed = 60
 @export var attack_damage = 4
-@export var attackSpeed = 120
+@export var attack_move_speed = 120
 @export var retreatSpeed = 60
 @export var is_flying = false
+@export var attack_speed = 4
 var start_position
-var canAttack = false
 
 func _ready():
-	attackTimeLabel = $AttackTimeLabel
-	attackTimeLabel.show()
-	attackTimeLabel.text = str(beatsUntilAttack)
+	$AttackTimer.wait_time = attack_speed
+	$AttackTimeScaler/AttackTimeBar.max_value = attack_speed
 	
 func _process(delta):
 	var angle = 0
@@ -29,18 +24,14 @@ func _process(delta):
 		if(global_position.distance_to(target) <= speed*delta):
 			global_position = target
 			target = null
+	
+	$AttackTimeScaler/AttackTimeBar.value = $AttackTimer.time_left
+			
 
-func _on_conductor_beat_signal(_beat_position):
-	if(canAttack):
-		beatsUntilAttack-=1
-		attackTimeLabel.text = str(beatsUntilAttack)
-		if(beatsUntilAttack <= 0):
-			useAttack()
-			beatsUntilAttack = beatsPerAttack
 		
 func useAttack():
 	target = get_parent().player.global_position
-	speed = attackSpeed
+	speed = attack_move_speed
 
 func _on_hurtbox_component_hit_target(_target):
 	speed = retreatSpeed
@@ -53,7 +44,12 @@ func _on_has_died():
 
 func _on_hitbox_component_area_entered(area):
 	if area.get_parent() is Player:
-		canAttack = true
+		$AttackTimer.wait_time = attack_speed
+		$AttackTimer.start()
 		
 func get_hitbox():
 	return $HitboxComponent
+
+
+func _on_attack_timer_timeout():
+	useAttack()

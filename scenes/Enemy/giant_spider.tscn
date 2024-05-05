@@ -1,26 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://nw34wng3uhh5"]
+[gd_scene load_steps=6 format=3 uid="uid://nw34wng3uhh5"]
 
 [ext_resource type="PackedScene" uid="uid://co6kb0hlogyyu" path="res://scenes/Enemy/monster.tscn" id="1_fwra4"]
 [ext_resource type="Script" path="res://scripts/GiantSpider.gd" id="2_qrp0w"]
 [ext_resource type="Texture2D" uid="uid://cscx8g4xbf4vc" path="res://images/spider.png" id="3_gbwup"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7uutv"]
-size = Vector2(31.7716, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1g5d"]
+size = Vector2(26.8073, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilv70"]
+size = Vector2(5, 4)
 
 [node name="GiantSpider" instance=ExtResource("1_fwra4")]
 script = ExtResource("2_qrp0w")
-beatsPerAttack = 8
 attack_damage = 2
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_gbwup")
 
-[node name="CollisionShape2D" parent="HitboxComponent" index="0"]
-position = Vector2(1.98572, 1)
-shape = SubResource("RectangleShape2D_7uutv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+position = Vector2(-0.992861, 2)
+shape = SubResource("RectangleShape2D_e1g5d")
 
-[node name="HurtboxComponent" parent="." index="3"]
+[node name="HurtboxComponent" parent="." index="2"]
 position = Vector2(-18, 1)
 
-[node name="HealthComponent" parent="." index="4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+position = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_ilv70")
+
+[node name="HealthComponent" parent="." index="3"]
 MAX_HEALTH = 16.0

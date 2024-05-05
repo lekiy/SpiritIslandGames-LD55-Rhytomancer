@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://752xfo7cfe68"]
+[gd_scene load_steps=13 format=3 uid="uid://752xfo7cfe68"]
 
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_75y0a"]
-[ext_resource type="AudioStream" uid="uid://v382kpue2sjf" path="res://music/FirstSpells.wav" id="2_jkut7"]
 [ext_resource type="Script" path="res://scenes/Conductor.gd" id="3_pvx8t"]
 [ext_resource type="PackedScene" uid="uid://ckb30m80odvp" path="res://scenes/player.tscn" id="4_c0h1e"]
 [ext_resource type="PackedScene" uid="uid://bl8qgx11jycgk" path="res://scenes/rune_container.tscn" id="7_6duo2"]
@@ -21,7 +20,6 @@ script = ExtResource("1_75y0a")
 metadata/_edit_horizontal_guides_ = [-51.0]
 
 [node name="Conductor" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_jkut7")
 script = ExtResource("3_pvx8t")
 
 [node name="StartTimer" type="Timer" parent="Conductor"]
